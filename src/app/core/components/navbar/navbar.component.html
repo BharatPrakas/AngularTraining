@@ -1,0 +1,60 @@
+<!-- <div style="min-height: 90vh;">
+  <div  >
+    <mat-toolbar color="warn" fxFlexLayout="row" fxLayoutAlign.gt-md="space-between center">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Angular Training</span>
+    </mat-toolbar>
+  </div>
+  <mat-drawer-container fxFlexFill class="example-container">
+    <mat-drawer  #drawer class="example-sidenav" mode="over">
+      <mat-nav-list>
+        <a routerLink="/app/task1" mat-list-item >task 1</a>
+        <a routerLink="/app/task2" mat-list-item>task 2</a>
+        <a routerLink="/app/task3" mat-list-item>task 3</a>
+        <a routerLink="/app/task4" mat-list-item>task 4</a>
+        <a routerLink="/app/task5" mat-list-item>task 5</a>
+        <a routerLink="/app/task6"mat-list-item>task 6</a>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
+ -->
+<div style="min-height: 100vh;">
+  <mat-toolbar color="warn">
+    <mat-toolbar-row fxLayoutAlign.gt-sm="space-between center">
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Angular Concepts</span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/app/employee" mat-button>Employee</a>
+        <a routerLink="/app/task1" mat-button>task 1</a>
+        <a routerLink="/app/task2" mat-button>task 2</a>
+        <a routerLink="/app/task3" mat-button>task 3</a>
+        <a routerLink="/app/task4" mat-button>task 4</a>
+        <a routerLink="/app/task5" mat-button>task 5</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" routerLink="" mat-list-item>Close</a>
+        <a routerLink="/app/menu1" mat-list-item>Menu Item 1</a>
+        <a routerLink="/app/menu2" mat-list-item>Menu Item 2</a>
+        <a routerLink="/app/menu3" mat-list-item>Menu Item 3</a>
+        <a routerLink="/app/menu4" mat-list-item>Menu Item 4</a>
+        <a routerLink="/app/menu5" mat-list-item>Menu Item 5</a>
+        <a routerLink="/app/menu6" mat-list-item>Menu Item 6</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill> <router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

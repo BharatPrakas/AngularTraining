@@ -1,0 +1,56 @@
+.border {
+    border: 1px solid rgb(228, 220, 220);
+}
+
+.container {
+    margin: 20px;
+}
+
+.grid {
+    padding: 10px;
+}
+
+.grid .picture img {
+    height: 100%;
+    width: 100%;
+}
+
+.description h2 {
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.description {
+    position: relative;
+}
+
+.description .brand {
+    color: black;
+    font-weight: 600;
+}
+
+.description .info {
+    color: grey;
+    text-align: justify;
+}
+
+.description .offer {
+    color: green;
+    font-weight: 500;
+}
+
+.description .price {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.description button {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+
+//
+::ng-deep .green-snackbar {
+    background: rgb(26, 161, 26) !important;
+}

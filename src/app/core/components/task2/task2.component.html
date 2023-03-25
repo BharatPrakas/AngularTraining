@@ -1,0 +1,14 @@
+<div class="container" fxLayoutAlign="space-between" fxLayoutGap="10px" fxLayout.lt-md="column" fxLayout="row wrap">
+  <div class="grid" fxFlex="24%" *ngFor="let product of products">
+    <div class="picture" fxLayoutAlign="center center"><img src={{product.img}}>
+    </div>
+    <div class="description">
+      <h2 class=brand>{{product.brand}}</h2>
+      <p class="info">{{product.info}}</p>
+      <p class="offer">{{product.offer}}</p>
+      <p class="price">{{product.price | currency:'INR'}}</p>
+      <button mat-raised-button color="warn" (click)="openSnakbarService()">Add to
+        cart</button>
+    </div>
+  </div>
+</div>

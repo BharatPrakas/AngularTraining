@@ -1,0 +1,9 @@
+<div fxLayout="row" fxLayoutAlign="none center" fxLayoutGap="5px" matSnackBarLabel>
+    <div *ngIf="isIcon" fxLayoutAlign="center center"><mat-icon>{{data.icon}}</mat-icon></div>
+    <div fxLayoutAlign="center center" class="msg">{{data.msg}}</div>
+</div>
+<span matSnackBarActions>
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">
+        <mat-icon>close</mat-icon>
+    </button>
+</span>

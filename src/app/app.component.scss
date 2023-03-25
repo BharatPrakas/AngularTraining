@@ -1,0 +1,42 @@
+.conatiner {
+    background-color: #fae8d3;
+    padding: 3% 5%;
+    overflow: visible;
+    // height: 80vh;
+}
+
+.pic img {
+    height: 180px;
+    width: 200px;
+}
+
+.left h1 {
+    font-size: 48px;
+    line-height: 1.5;
+    color: #1b1a1d;
+}
+
+.right {
+    padding: 0 5%;
+    position: absolute;
+    right: 0;
+}
+
+.right img {
+    width: 100%;
+    height: 700px;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .right {
+        padding: 0 5%;
+        position: static;
+        right: 0;
+    }
+
+    .right img {
+        width: 100%;
+        height: 100%;
+    }
+}

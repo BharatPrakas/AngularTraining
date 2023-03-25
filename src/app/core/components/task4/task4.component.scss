@@ -1,0 +1,43 @@
+.heading {
+    text-align: center;
+    margin: 15px 0;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 22px;
+    color: black;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid rgb(223, 218, 218);
+    margin: 20px;
+}
+
+.snackbar {
+    padding: 40px;
+}
+
+//---------- BUTTON COLOR ----------
+.warning {
+    background-color: #E4A11B;
+    padding: 20px 30px;
+    color: white;
+}
+
+.success {
+    background-color: #14A44D;
+    padding: 20px 30px;
+    color: white;
+}
+
+.error {
+    background-color: #DC3545;
+    padding: 20px 30px;
+    color: white;
+}
+
+.default {
+    background-color: #333333;
+    padding: 20px 30px;
+    color: white;
+}

@@ -1,0 +1,10 @@
+<h2 class="heading">MatSnackBar</h2>
+<div class="container" fxLayoutAlign="center center">
+    <div class="snackbar" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap="20px" fxFlex.lt-lg="100%"
+        fxLayoutAlign="space-between">
+        <button mat-raised-button (click)="success()" class="success">Success</button>
+        <button mat-raised-button (click)="warning()" class="warning">Warning</button>
+        <button mat-raised-button (click)="error()" class="error">Error</button>
+        <button mat-raised-button (click)="default()" class="default">Defalut</button>
+    </div>
+</div>

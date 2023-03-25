@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//---------- INPUT STYLE ----------
+
+//-----INPUT LABLE-----
+.mat-mdc-form-field,
+.mat-mdc-floating-label {
+    font-size: 13px !important;
+}
+
+//-----INPUT PADDING-----
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 10px !important;
+}
+
+//-----INPUT HEIGHT-----
+.mat-mdc-form-field-flex {
+    height: 35px !important;
+}
+
+//-----INPUT ICON-----
+.mat-mdc-icon-button svg,
+.mat-mdc-icon-button img {
+    width: var(--mdc-icon-button-icon-size, 20px) !important;
+    height: var(--mdc-icon-button-icon-size, 20px) !important;
+}
+
+.content .mdc-icon-button {
+    right: -7px !important;
+}
+
+//-----INPUT SELECT-----
+.mat-mdc-select {
+    font-size: 13px !important;
+}
+
+//-----INPUT SELECT OPTION-----
+.mat-mdc-option {
+    font-size: 13px !important;
+}
+
+//-----INPUT HINT-----
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+    padding: 0px !important;
+}
+
+.mat-mdc-select-arrow svg {
+    left: -50% !important;
+}
+
+//---------- CHANGE DEFAULT SNACKBAR BACKGROUND COLOR  ----------
+
+.mdc-snackbar__surface {
+    background-color: transparent !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+    color: white !important;
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+    color: white !important;
+
+}
+
+//---------- CUSTOM SNACKBAR COLOR ----------
+
+.success-snackbar {
+    background-color: #14A44D;
+}
+
+.warning-snackbar {
+    background-color: #E4A11B;
+}
+
+.error-snackbar {
+    background-color: #DC3545;
+}
+
+.defalut-snackbar {
+    background-color: #333333;
+}
