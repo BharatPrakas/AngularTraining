@@ -12,8 +12,6 @@ export interface Details {
   age: number;
   department: string;
 }
-
-
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -34,13 +32,11 @@ export class EmployeeComponent implements AfterViewInit {
     { no: 10, name: 'Anand', age: 21, department: 'Developement' },
   ];
   constructor(private openDialog: MatDialog, private dataService: DataService, private snackBar: MatSnackBar) { }
-
   displayedColumns: string[] = ['no', 'name', 'age', 'department', 'action'];
   dataSource = new MatTableDataSource<Details>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
-
   @ViewChild('delete', { static: true }) del!: TemplateRef<any>;
 
   ngAfterViewInit() {
@@ -54,7 +50,6 @@ export class EmployeeComponent implements AfterViewInit {
       autoFocus: false,
       width: '400px'
     });
-
     dialogRef.afterClosed().subscribe(Response => {
       if (Response) {
         const index = this.ELEMENT_DATA.findIndex(x => x.no === data.no);
@@ -74,7 +69,6 @@ export class EmployeeComponent implements AfterViewInit {
     });
   }
 }
-
 function openSnackBar(msg: any, action: any, String: StringConstructor) {
   throw new Error('Function not implemented.');
 }
