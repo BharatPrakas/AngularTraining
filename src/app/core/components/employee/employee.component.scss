@@ -1,15 +1,54 @@
-table {
-  width: 100%;
-}
-
 table th {
-  color: grey;
+  color: grey
 }
 
 .container {
-  margin: 20px;
+  margin: 20px 10px;
+  max-width: 100%;
+  overflow: hidden;
+  overflow: auto;
 }
 
 mat-icon:hover {
   cursor: pointer;
+}
+
+.record-container {
+  padding: 20px;
+}
+
+.record-container h2 {
+  text-align: center;
+  color: black;
+}
+
+.record-container button {
+  background-color: rgb(22, 21, 21);
+  color: white;
+}
+
+.addEmplyee {
+  padding: 20px 10px 0 0;
+}
+
+.addEmplyee button {
+  background-color: #333333;
+  color: white;
+}
+
+.deleteRecord button {
+  background-color: black;
+  color: white;
+}
+
+//----- INPUT HEIGHT -----
+::ng-deep .record-container .mat-mdc-form-field-flex {
+  height: 40px !important;
+  padding: 3px 0 0 2px;
+  font-size: 14px;
+}
+
+//----- INPUT SELECT OPTION -----
+::ng-deep .record-container .mat-mdc-option {
+  font-size: 14px !important;
 }

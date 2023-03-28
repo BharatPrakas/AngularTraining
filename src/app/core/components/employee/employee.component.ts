@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,8 +21,8 @@ export interface Details {
 export class EmployeeComponent implements AfterViewInit {
 
   ELEMENT_DATA: Details[] = [
-    { no: 1, name: 'Bharath', age: 21, department: 'Developement' },
-    { no: 2, name: 'Prakash', age: 20, department: 'Developement' },
+    { no: 1, name: 'Ajaykumar', age: 21, department: 'Developement' },
+    { no: 2, name: 'Abhishek', age: 20, department: 'Developement' },
     { no: 3, name: 'Karthick', age: 22, department: 'Developement' },
     { no: 4, name: 'Venkatesh', age: 24, department: 'Developement' },
     { no: 5, name: 'Dharun', age: 21, department: 'Developement' },
@@ -38,11 +39,12 @@ export class EmployeeComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild('delete', { static: true }) del!: TemplateRef<any>;
-
+  @ViewChild('addRecords', { static: true }) add!: TemplateRef<any>
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  //---------- DELETE RECORD ----------
   name: any;
   OnDelete(data: any) {
     this.name = data.name;
@@ -67,6 +69,41 @@ export class EmployeeComponent implements AfterViewInit {
         }
       }
     });
+  }
+  // -------------- ADD RECORDS --------------
+  AddEmployee!: FormGroup;
+  Department = [{ sno: 1, value: 'Developement' }, { sno: 2, value: 'Marketing' }, { sno: 3, value: 'Business Analysist' }]
+  ngOnInit() {
+    this.AddEmployee = new FormGroup({
+      no: new FormControl(null,),
+      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      department: new FormControl(null, Validators.required),
+    });
+  }
+  addRecord() {
+    this.openDialog.open(this.add, {
+      autoFocus: true,
+      width: '400px'
+    });
+  }
+
+  onSubmit() {
+    const sizeOfArray = this.ELEMENT_DATA.length;
+    const lastElement = this.ELEMENT_DATA[sizeOfArray - 1];
+    const sno = lastElement.no;
+    if (this.AddEmployee.valid) {
+      const records = this.AddEmployee.value;
+      records.no = sno + 1
+      this.ELEMENT_DATA.push(records);
+      const updatedArray = this.ELEMENT_DATA.length;
+      this.openDialog.closeAll();
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      if (sizeOfArray != updatedArray) {
+        this.dataService.customSnakbar('New Record added sucessfully !', 'success', 3000);
+      }
+    }
   }
 }
 function openSnackBar(msg: any, action: any, String: StringConstructor) {

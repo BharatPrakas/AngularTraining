@@ -70,11 +70,11 @@ export class DataService {
     { action: 'error', style: 'error-snackbar', icon: 'error' },
     { action: 'defalut', style: 'defalut-snackbar', icon: '' }
   ]
-  customSnakbar(message: string, action: string) {
+  customSnakbar(message: string, action: string, duration?: number) {
     const property = this.actions.find(x => x.action === action);
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { msg: message, icon: property?.icon },
-      duration: 2000,
+      duration: duration ? duration : 2000,
       panelClass: property?.style
     });
   }

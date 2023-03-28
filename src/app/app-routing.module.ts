@@ -9,7 +9,7 @@ import { Task4Component } from './core/components/task4/task4.component';
 import { Task5Component } from './core/components/task5/task5.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'app', pathMatch: 'full' },
+  { path: '', redirectTo: 'app/employee', pathMatch: 'full' },
   {
     path: 'app', component: NavbarComponent, children: [
       { path: 'employee', component: EmployeeComponent },
