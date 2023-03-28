@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -20,6 +20,8 @@ export interface Details {
 })
 export class EmployeeComponent implements AfterViewInit {
 
+
+
   ELEMENT_DATA: Details[] = [
     { no: 1, name: 'Ajaykumar', age: 21, department: 'Developement' },
     { no: 2, name: 'Abhishek', age: 20, department: 'Developement' },
@@ -33,6 +35,7 @@ export class EmployeeComponent implements AfterViewInit {
     { no: 10, name: 'Anand', age: 21, department: 'Developement' },
   ];
   constructor(private openDialog: MatDialog, private dataService: DataService, private snackBar: MatSnackBar) { }
+
   displayedColumns: string[] = ['no', 'name', 'age', 'department', 'action'];
   dataSource = new MatTableDataSource<Details>(this.ELEMENT_DATA);
 
@@ -40,6 +43,8 @@ export class EmployeeComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild('delete', { static: true }) del!: TemplateRef<any>;
   @ViewChild('addRecords', { static: true }) add!: TemplateRef<any>
+  @ViewChild('editRecords', { static: true }) edit!: TemplateRef<any>
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -72,9 +77,19 @@ export class EmployeeComponent implements AfterViewInit {
   }
   // -------------- ADD RECORDS --------------
   AddEmployee!: FormGroup;
+  editEmployee!: FormGroup;
+
   Department = [{ sno: 1, value: 'Developement' }, { sno: 2, value: 'Marketing' }, { sno: 3, value: 'Business Analysist' }]
   ngOnInit() {
+    this.dataService.tittle = "Employee Table";
     this.AddEmployee = new FormGroup({
+      no: new FormControl(null,),
+      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      department: new FormControl(null, Validators.required),
+    });
+
+    this.editEmployee = new FormGroup({
       no: new FormControl(null,),
       name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
@@ -103,8 +118,48 @@ export class EmployeeComponent implements AfterViewInit {
       if (sizeOfArray != updatedArray) {
         this.dataService.customSnakbar('New Record added sucessfully !', 'success', 3000);
       }
+      // ---------- CLEAR PREVIOUS DATAS ---------- 
+      this.openDialog.afterAllClosed.subscribe(x => {
+        this.AddEmployee.get('name')?.setValue('');
+        this.AddEmployee.get('age')?.setValue('');
+        this.AddEmployee.get('department')?.setValue('');
+        this.AddEmployee.get('name')?.markAsUntouched();
+        this.AddEmployee.get('age')?.markAsUntouched();
+        this.AddEmployee.get('department')?.markAsUntouched();
+      });
     }
   }
+  // -------------- EDIT RECORDS --------------
+  OnEdit(editRecord: any) {
+    const editDialogRef = this.openDialog.open(this.edit, {
+      autoFocus: true,
+      width: '400px'
+    });
+    this.editEmployee.get('no')?.setValue(editRecord.no);
+    this.editEmployee.get('name')?.setValue(editRecord.name);
+    this.editEmployee.get('age')?.setValue(editRecord.age);
+    this.editEmployee.get('department')?.setValue(editRecord.department);
+
+    editDialogRef.afterClosed().subscribe(responce => {
+      const editValue = this.editEmployee.value;
+      if (responce) {
+        const index = this.ELEMENT_DATA.findIndex(x => x.no === editRecord.no);
+        this.ELEMENT_DATA.splice(index, 1);
+        this.ELEMENT_DATA.splice(index, 0, editValue);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        // this.ELEMENT_DATA[index].no = editValue.no;
+        // this.ELEMENT_DATA[index].name = editValue.name;
+        // this.ELEMENT_DATA[index].age = editValue.age;
+        // this.ELEMENT_DATA[index].department = editValue.department;
+      }
+    });
+  }
+
+  onReset() {
+    location.reload();
+  }
+
 }
 function openSnackBar(msg: any, action: any, String: StringConstructor) {
   throw new Error('Function not implemented.');

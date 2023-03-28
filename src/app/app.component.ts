@@ -9,9 +9,5 @@ import { DataService } from './Services/data.service';
 
 export class AppComponent {
   title = 'AngularTraining';
-
-  constructor(private dataService: DataService) { }
-
-  count = this.dataService.msg;
-
+  constructor() { }
 }

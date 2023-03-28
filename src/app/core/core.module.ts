@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from '../material/material.module';
 import { Router, RouterModule } from '@angular/router';
 import { Task1Component } from './components/task1/task1.component';
@@ -10,6 +9,9 @@ import { Task4Component } from './components/task4/task4.component';
 import { Task5Component } from './components/task5/task5.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,12 +24,6 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     EmployeeComponent,
     SnackbarComponent,
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RouterModule,
-
-  ],
   exports: [
     NavbarComponent,
     Task1Component,
@@ -36,6 +32,11 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     Task4Component,
     Task5Component,
     EmployeeComponent,
+  ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    RouterModule,
 
   ]
 })

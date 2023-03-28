@@ -21,7 +21,11 @@ export class Task2Component {
 
   ]
 
-  constructor(private snackBar: MatSnackBar, private dataService: DataService) { }
+  constructor(private snackBar: MatSnackBar, public dataService: DataService) { }
+
+  ngOnInit() {
+    this.dataService.tittle = "Ecommerce";
+  }
 
   openSnakbarService() {
     this.dataService.successSnakbar('Added to cart Successfully', 'Dismiss');

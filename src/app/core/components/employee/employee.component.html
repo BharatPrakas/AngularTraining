@@ -1,5 +1,6 @@
-<div class="addEmplyee" fxLayoutAlign="end">
-  <button mat-raised-button color="primary" (click)="addRecord()"> Add Employee</button>
+<div class="addEmplyee" fxLayoutAlign="end" fxLayoutGap="10px">
+  <button mat-raised-button color="primary" (click)="onReset()"><mat-icon>restart_alt</mat-icon> Reset</button>
+  <button mat-raised-button color="warn" (click)="addRecord()"><mat-icon>add</mat-icon> Add Employee</button>
 </div>
 <div class="container mat-elevation-z8">
   <table class="table" mat-table [dataSource]="dataSource" matSort>
@@ -32,7 +33,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
       <td mat-cell *matCellDef="let details">
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click)="OnEdit(details)">edit </mat-icon>
         <mat-icon (click)="OnDelete(details)">delete</mat-icon>
       </td>
     </ng-container>
@@ -44,7 +45,7 @@
   <mat-paginator [pageSizeOptions]="[15, 20, 25]" showFirstLastButtons>
   </mat-paginator>
 </div>
-<!-- ---------- ADD NEW RECORDS ---------- -->
+<!-- ---------- ADD NEW RECORDS DIALOG---------- -->
 <ng-template #addRecords>
   <form [formGroup]="AddEmployee">
     <div class="record-container" fxLayout="column" fxLayoutGap="10px">
@@ -88,7 +89,56 @@
     </div>
   </form>
 </ng-template>
-<!-- ---------- DELETE RECORDS ---------- -->
+
+<!-- ---------- EDIT RECORDS DIALOG---------- -->
+<ng-template #editRecords>
+  <form [formGroup]="editEmployee">
+    <div class="record-container" fxLayout="column" fxLayoutGap="10px">
+      <h2>Edit Records</h2>
+      <!------- FirstName & Sno -------->
+      <div fxFlex="100%" fxLayoutGap="10px">
+        <mat-form-field fxFlex="50%" appearance="outline">
+          <input matInput formControlName="no">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="50%" appearance="outline">
+          <input matInput placeholder="Name" formControlName="name">
+          <mat-error *ngIf="AddEmployee?.get('name')?.hasError('required')">
+            This field is required!
+          </mat-error>
+          <mat-error *ngIf="AddEmployee?.get('name')?.hasError('pattern')">
+            Numbers are not allowed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!------- age & department -------->
+      <div fxFlex="100%" fxLayoutGap="10px">
+        <mat-form-field fxFlex="50%" appearance="outline">
+          <input matInput placeholder="Age" formControlName="age">
+          <mat-error *ngIf="AddEmployee?.get('age')?.hasError('required')">
+            This field is required!
+          </mat-error>
+          <mat-error *ngIf="AddEmployee?.get('age')?.hasError('pattern')">
+            Strings not allowed!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%" appearance="outline">
+          <mat-select formControlName="department" placeholder=" Developement">
+            <mat-option *ngFor="let data of Department" [value]="data.value">
+              {{data.value}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="AddEmployee?.get('department')?.hasError('required')">
+            This field is required!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--------- Submit ------->
+      <button mat-raised-button [mat-dialog-close]="true">UPDATE</button>
+    </div>
+  </form>
+</ng-template>
+<!-- ---------- DELETE RECORDS DIALOG---------- -->
 <ng-template #delete>
   <div class="deleteRecord">
     <div mat-dialog-content>

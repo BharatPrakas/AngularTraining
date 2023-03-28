@@ -29,6 +29,7 @@ export class Task3Component implements OnInit {
 
   register!: FormGroup;
   ngOnInit() {
+    this.dataService.tittle = "Forms";
     this.register = new FormGroup({
       FirstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       LastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
@@ -41,14 +42,17 @@ export class Task3Component implements OnInit {
     });
   }
   OnSubmit() {
-    console.log(this.register);
     if (this.register.valid) {
       this.dataService.successSnakbar('Submitted Sucessfully', 'ok');
     }
     else {
       this.dataService.errorSnakbar('Something went wrong', 'ok');
     }
+  }
 
-
+  OnClear() {
+    this.register.reset();
+    this.register.clearValidators();
+    this.register.updateValueAndValidity();
   }
 }

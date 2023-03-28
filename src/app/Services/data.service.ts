@@ -8,10 +8,8 @@ import { SnackbarComponent } from '../core/components/snackbar/snackbar.componen
 })
 
 export class DataService {
-  // actions !: Array<any>;
+  tittle: any;
   constructor(private snackBar: MatSnackBar) { }
-  count = 0;
-  msg = "hello";
 
   //SNACKBAR SERVICE
 

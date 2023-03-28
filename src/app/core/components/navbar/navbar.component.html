@@ -3,18 +3,15 @@
     <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Angular Training</span>
+    <span>{{dataService.tittle?dataService.tittle:'Angular Training'}}</span>
   </mat-toolbar>
   <mat-drawer-container class="sidebar-container">
-    <mat-drawer class="sidenav-drawer" #drawer mode="side">
+    <mat-drawer class="sidenav-drawer" #drawer [mode]="isSmallDevice ? 'over' : 'side'">
       <mat-nav-list>
         <a routerLink="/app/employee" mat-list-item>Employee</a>
-        <a routerLink="/app/task1" mat-list-item>task 1</a>
         <a routerLink="/app/task2" mat-list-item>Ecommerce</a>
         <a routerLink="/app/task3" mat-list-item>Forms</a>
         <a routerLink="/app/task4" mat-list-item>Snackbar</a>
-        <a routerLink="/app/task5" mat-list-item>task 5</a>
-        <a routerLink="/app/task6" mat-list-item>task 6</a>
       </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content class="content">
