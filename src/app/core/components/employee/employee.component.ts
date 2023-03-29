@@ -36,6 +36,7 @@ export class EmployeeComponent implements AfterViewInit {
   ];
   constructor(private openDialog: MatDialog, private dataService: DataService, private snackBar: MatSnackBar) { }
 
+
   displayedColumns: string[] = ['no', 'name', 'age', 'department', 'action'];
   dataSource = new MatTableDataSource<Details>(this.ELEMENT_DATA);
 
