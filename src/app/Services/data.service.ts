@@ -9,6 +9,7 @@ import { SnackbarComponent } from '../core/components/snackbar/snackbar.componen
 
 export class DataService {
   tittle: any;
+  onchanges!: string;
   constructor(private snackBar: MatSnackBar) { }
 
   //SNACKBAR SERVICE

@@ -10,7 +10,7 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class Task3Component implements OnInit {
 
-  constructor(private dataService: DataService, private snackBar: MatSnackBar) { }
+  constructor(private dataService: DataService) { }
 
   todayDate = new Date();
 

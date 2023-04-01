@@ -7,6 +7,9 @@ import { Task2Component } from './core/components/task2/task2.component';
 import { Task3Component } from './core/components/task3/task3.component';
 import { Task4Component } from './core/components/task4/task4.component';
 import { Task5Component } from './core/components/task5/task5.component';
+import { TableComponent } from './core/components/table/table.component';
+import { TimesheetComponent } from './core/components/dynamicTable/timesheet/timesheet.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'app/employee', pathMatch: 'full' },
@@ -18,6 +21,8 @@ const routes: Routes = [
       { path: 'task3', component: Task3Component },
       { path: 'task4', component: Task4Component },
       { path: 'task5', component: Task5Component },
+      { path: 'table', component: TableComponent },
+      { path: 'dynamic', component: TimesheetComponent },
     ]
   }
 ];

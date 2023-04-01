@@ -136,11 +136,7 @@ export class EmployeeComponent implements AfterViewInit {
       autoFocus: true,
       width: '400px'
     });
-    this.editEmployee.get('no')?.setValue(editRecord.no);
-    this.editEmployee.get('name')?.setValue(editRecord.name);
-    this.editEmployee.get('age')?.setValue(editRecord.age);
-    this.editEmployee.get('department')?.setValue(editRecord.department);
-
+    this.editEmployee.setValue(editRecord);
     editDialogRef.afterClosed().subscribe(responce => {
       const editValue = this.editEmployee.value;
       if (responce) {

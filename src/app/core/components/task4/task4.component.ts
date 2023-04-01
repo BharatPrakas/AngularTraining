@@ -7,6 +7,7 @@ import { DataService } from 'src/app/Services/data.service';
   styleUrls: ['./task4.component.scss',]
 })
 export class Task4Component {
+  msg = "hello";
   constructor(private dataService: DataService) { }
 
   //----- SUCCESS SNACKBAR -----

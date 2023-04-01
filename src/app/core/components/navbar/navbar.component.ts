@@ -12,7 +12,9 @@ export class NavbarComponent implements OnInit {
   private mediaSubscription !: Subscription;
   isSmallDevice = false;
   toggler = true;
-  constructor(private mediaObserver: MediaObserver, public dataService: DataService) { }
+  constructor(private mediaObserver: MediaObserver, public dataService: DataService) {
+    dataService.onchanges = "value from navbar"
+  }
   ngOnInit(): void {
     this.mediaSubscription = this.mediaObserver.asObservable().subscribe((x) => {
       x.forEach(element => {
