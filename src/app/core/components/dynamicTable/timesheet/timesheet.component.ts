@@ -17,9 +17,9 @@ export class TimesheetComponent {
     { label: 'timesheet', Component: WorklistComponent },
     { label: 'default', Component: DefalutComponent },
   ];
-
+  isActiveLabel = this.ActiveTab[0].label;
   onTabClick(event: any) {
-    console.log(event.tab.isActive);
+    this.isActiveLabel = event.tab.textLabel;
   }
 
   // ReceiveData(event: any) {
