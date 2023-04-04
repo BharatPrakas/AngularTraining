@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/Services/data.service';
 
@@ -29,7 +29,10 @@ export class Task3Component implements OnInit {
 
   register!: FormGroup;
   ngOnInit() {
-    this.dataService.tittle = "Forms";
+    setTimeout(() => {
+      this.dataService.tittle.emit('Forms');
+    });
+
     this.register = new FormGroup({
       FirstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
       LastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
@@ -38,7 +41,8 @@ export class Task3Component implements OnInit {
       DateOfBirth: new FormControl(null, Validators.required),
       DateOfJoin: new FormControl(null, Validators.required),
       Designation: new FormControl(null, Validators.required),
-      Role: new FormControl(null, Validators.required)
+      Role: new FormControl(null, Validators.required),
+      contacts: new FormArray([])
     });
   }
   OnSubmit() {
@@ -52,7 +56,5 @@ export class Task3Component implements OnInit {
 
   OnClear() {
     this.register.reset();
-    this.register.clearValidators();
-    this.register.updateValueAndValidity();
   }
 }

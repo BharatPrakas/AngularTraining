@@ -6,12 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { TableDynamicComponent } from './shared/table-dynamic/table-dynamic.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    TableDynamicComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MaterialModule,
     CoreModule,
     MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,10 +12,23 @@ export class NavbarComponent implements OnInit {
   private mediaSubscription !: Subscription;
   isSmallDevice = false;
   toggler = true;
+  pageTitle!: string;
   constructor(private mediaObserver: MediaObserver, public dataService: DataService) {
-    dataService.onchanges = "value from navbar"
   }
+
+  navList = [
+    { path: '/app/employee', value: 'Employee' },
+    { path: '/app/task2', value: 'Ecommerce' },
+    { path: '/app/task3', value: 'Forms' },
+    { path: '/app/task4', value: 'Snackbar' },
+    { path: '/app/api', value: 'API' },
+    { path: '/app/dynamic', value: 'Table' },
+  ];
+
   ngOnInit(): void {
+    this.dataService.tittle.subscribe(res => {
+      this.pageTitle = res;
+    })
     this.mediaSubscription = this.mediaObserver.asObservable().subscribe((x) => {
       x.forEach(element => {
         if (element.mqAlias == 'sm' || element.mqAlias == 'lt-sm') {

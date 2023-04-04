@@ -14,7 +14,7 @@ import { TableComponent } from './components/table/table.component';
 import { TimesheetComponent } from './components/dynamicTable/timesheet/timesheet.component';
 import { WorklistComponent } from './components/dynamicTable/worklist/worklist.component';
 import { DefalutComponent } from './components/dynamicTable/defalut/defalut.component';
-
+import { ApiComponent } from './components/api/api.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { DefalutComponent } from './components/dynamicTable/defalut/defalut.comp
     TimesheetComponent,
     WorklistComponent,
     DefalutComponent,
+    ApiComponent,
 
   ],
   exports: [
@@ -40,13 +41,13 @@ import { DefalutComponent } from './components/dynamicTable/defalut/defalut.comp
     Task4Component,
     Task5Component,
     EmployeeComponent,
-    TableComponent
+    TableComponent,
+    ApiComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-
   ]
 })
 export class CoreModule { }

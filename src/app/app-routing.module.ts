@@ -9,6 +9,7 @@ import { Task4Component } from './core/components/task4/task4.component';
 import { Task5Component } from './core/components/task5/task5.component';
 import { TableComponent } from './core/components/table/table.component';
 import { TimesheetComponent } from './core/components/dynamicTable/timesheet/timesheet.component';
+import { ApiComponent } from './core/components/api/api.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'task5', component: Task5Component },
       { path: 'table', component: TableComponent },
       { path: 'dynamic', component: TimesheetComponent },
+      { path: 'api', component: ApiComponent },
     ]
   }
 ];

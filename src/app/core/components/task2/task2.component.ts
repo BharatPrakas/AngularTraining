@@ -24,7 +24,10 @@ export class Task2Component {
   constructor(private snackBar: MatSnackBar, public dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.tittle = "Ecommerce";
+    // this.dataService.tittle.emit('Ecommerce');
+    setTimeout(() => {
+      this.dataService.tittle.emit('Ecommerce');
+    });
   }
 
   openSnakbarService() {

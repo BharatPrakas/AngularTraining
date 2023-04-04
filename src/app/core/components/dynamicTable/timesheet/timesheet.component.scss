@@ -1,0 +1,10 @@
+::ng-deep {
+  .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+    flex-grow: 0 !important;
+  }
+}
+
+.tab {
+  border-bottom: none !important;
+  border: 1px solid #D3D3D3;
+}

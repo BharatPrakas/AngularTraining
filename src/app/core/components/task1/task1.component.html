@@ -1,12 +1,8 @@
-<div class="task1-container" fxLayout="column" fxLayoutAlign="center center">
-  <button mat-raised-button color="warn" (click)="toggle()">Click</button>
-  <br><br>
-  <mat-form-field *ngIf="event" appearance="outline">
-    <input matInput type="text" [(ngModel)]="value" placeholder="type Somthing">
-    <button *ngIf="value" matSuffix mat-icon-button (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <p>{{value}}</p>
-
+<div class="task1-container" fxLayoutAlign="center">
+  <div class="container" fxLayoutGap="10px" fxLayout="column" fxFlex="30%">
+    <div class="btn" fxLayoutGap="10px" fxLayout="column">
+      <button mat-stroked-button color="primary" (click)="subscribe()">Subscribe</button>
+      <button mat-stroked-button color="warn">Unsubscribe</button>
+    </div>
+  </div>
 </div>

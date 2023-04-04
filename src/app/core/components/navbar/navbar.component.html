@@ -3,19 +3,14 @@
     <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Angular Training</span>
+    <span>{{pageTitle}}</span>
   </mat-toolbar>
   <mat-drawer-container class="sidebar-container">
     <mat-drawer class="sidenav-drawer" #drawer [opened]="isSmallDevice?false:true"
       [mode]="isSmallDevice ? 'over' : 'side'">
       <mat-nav-list>
-        <a routerLink="/app/employee" mat-list-item>Employee</a>
-        <a routerLink="/app/task2" mat-list-item>Ecommerce</a>
-        <a routerLink="/app/task3" mat-list-item>Forms</a>
-        <a routerLink="/app/task4" mat-list-item>Snackbar</a>
-        <a routerLink="/app/task5" mat-list-item>Life cycle hooks</a>
-        <a routerLink="/app/table" mat-list-item>Table</a>
-        <a routerLink="/app/dynamic" mat-list-item>Dynamic table</a>
+        <a *ngFor="let item of navList" [routerLink]="item.path" mat-list-item
+          [ngClass]="{activetab: item.value === pageTitle }">{{item.value}}</a>
       </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content class="content">

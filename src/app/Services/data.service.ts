@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../core/components/snackbar/snackbar.component';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { SnackbarComponent } from '../core/components/snackbar/snackbar.componen
 })
 
 export class DataService {
-  tittle: any;
+  tittle = new EventEmitter<string>();
   onchanges!: string;
   constructor(private snackBar: MatSnackBar) { }
 

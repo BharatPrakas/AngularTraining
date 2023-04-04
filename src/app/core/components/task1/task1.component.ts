@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, Subscription, observable } from 'rxjs';
 
 @Component({
   selector: 'app-task1',
@@ -6,9 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./task1.component.scss']
 })
 export class Task1Component {
-  value!: any;
-  event = false;
-  toggle() {
-    this.event = !this.event;
+
+  ngOnInit() {
+
+  }
+
+
+  subscribe() {
+    let data = new Observable(x => {
+
+    })
+
+    data.subscribe({
+      next: (res) => {
+        console.log(res);
+      }
+    });
   }
 }

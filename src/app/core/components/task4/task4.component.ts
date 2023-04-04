@@ -10,6 +10,13 @@ export class Task4Component {
   msg = "hello";
   constructor(private dataService: DataService) { }
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.dataService.tittle.emit('Snackbar');
+    });
+    // this.dataService.tittle.emit('Sanckbar');
+  }
+
   //----- SUCCESS SNACKBAR -----
   success() {
     this.dataService.customSnakbar("Submiited Successfully", 'success');

@@ -63,8 +63,9 @@
             <input matInput [matDatepicker]="picker" formControlName="DateOfBirth" [max]="todayDate">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="register?.get('DateOfBirth')?.hasError('required')">
-              This field is required!
+            <mat-error
+              *ngIf="register?.get('DateOfBirth')?.hasError('required') && register.get('DateOfBirth')?.hasError('matDatepickerParse')">
+              Invalid Date
             </mat-error>
           </mat-form-field>
         </div>
@@ -75,8 +76,9 @@
               [min]="register.get('DateOfBirth')?.value">
             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
-            <mat-error *ngIf="register?.get('DateOfJoin')?.hasError('required')">
-              This field is required!
+            <mat-error
+              *ngIf="register?.get('DateOfJoin')?.hasError('required') && register.get('DateOfJoin')?.hasError('matDatepickerParse')">
+              Invalid Date
             </mat-error>
           </mat-form-field>
         </div>
@@ -112,9 +114,12 @@
       </div>
       <!-------Submit Button------->
       <div fxLayoutAlign="center center" fxLayoutGap="10px">
-        <button mat-raised-button class="btn" (click)="OnSubmit()">Submit</button>
         <button type="reset" mat-stroked-button (click)="OnClear()">Clear</button>
+        <button mat-raised-button class="btn" (click)="OnSubmit()">Submit</button>
       </div>
     </form>
+    <br>
+    <mat-divider></mat-divider>
+    <div *ngIf="register.get('contacts')"></div>
   </div>
 </div>

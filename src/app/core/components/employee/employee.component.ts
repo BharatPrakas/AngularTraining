@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Output, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -18,9 +18,7 @@ export interface Details {
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent implements AfterViewInit {
-
-
+export class EmployeeComponent {
 
   ELEMENT_DATA: Details[] = [
     { no: 1, name: 'Ajaykumar', age: 21, department: 'Developement' },
@@ -34,8 +32,12 @@ export class EmployeeComponent implements AfterViewInit {
     { no: 9, name: 'Praveen', age: 22, department: 'Developement' },
     { no: 10, name: 'Anand', age: 21, department: 'Developement' },
   ];
-  constructor(private openDialog: MatDialog, private dataService: DataService, private snackBar: MatSnackBar) { }
 
+  constructor(
+    private openDialog: MatDialog,
+    private dataService: DataService,
+    private snackBar: MatSnackBar,
+  ) { };
 
   displayedColumns: string[] = ['no', 'name', 'age', 'department', 'action'];
   dataSource = new MatTableDataSource<Details>(this.ELEMENT_DATA);
@@ -45,6 +47,26 @@ export class EmployeeComponent implements AfterViewInit {
   @ViewChild('delete', { static: true }) del!: TemplateRef<any>;
   @ViewChild('addRecords', { static: true }) add!: TemplateRef<any>
   @ViewChild('editRecords', { static: true }) edit!: TemplateRef<any>
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.dataService.tittle.emit('Employee');
+    });
+    // this.dataService.tittle.next('Employee');
+    this.AddEmployee = new FormGroup({
+      no: new FormControl(null,),
+      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      department: new FormControl(null, Validators.required),
+    });
+
+    this.editEmployee = new FormGroup({
+      no: new FormControl(null,),
+      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      department: new FormControl(null, Validators.required),
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -81,22 +103,7 @@ export class EmployeeComponent implements AfterViewInit {
   editEmployee!: FormGroup;
 
   Department = [{ sno: 1, value: 'Developement' }, { sno: 2, value: 'Marketing' }, { sno: 3, value: 'Business Analysist' }]
-  ngOnInit() {
-    this.dataService.tittle = "Employee Table";
-    this.AddEmployee = new FormGroup({
-      no: new FormControl(null,),
-      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
-      department: new FormControl(null, Validators.required),
-    });
 
-    this.editEmployee = new FormGroup({
-      no: new FormControl(null,),
-      name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      age: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$')]),
-      department: new FormControl(null, Validators.required),
-    });
-  }
   addRecord() {
     this.openDialog.open(this.add, {
       autoFocus: true,
@@ -145,10 +152,6 @@ export class EmployeeComponent implements AfterViewInit {
         this.ELEMENT_DATA.splice(index, 0, editValue);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        // this.ELEMENT_DATA[index].no = editValue.no;
-        // this.ELEMENT_DATA[index].name = editValue.name;
-        // this.ELEMENT_DATA[index].age = editValue.age;
-        // this.ELEMENT_DATA[index].department = editValue.department;
       }
     });
   }

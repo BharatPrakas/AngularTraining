@@ -15,7 +15,10 @@ export class SnackbarComponent {
   isIcon = true;
 
   ngOnInit() {
-    this.dataService.tittle = "Forms";
+    this.dataService.tittle.next('Snackbar');
+    this.dataService.tittle.subscribe(tittle => {
+      console.log(tittle);
+    });
     if (this.data.icon === '') {
       this.isIcon = false;
     }
