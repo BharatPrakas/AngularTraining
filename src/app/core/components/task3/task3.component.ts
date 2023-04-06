@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { DataService } from 'src/app/Services/data.service';
+import { HttpRoutingService } from 'src/app/Services/http-routing.service';
 
 @Component({
   selector: 'app-task3',
@@ -10,10 +11,10 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class Task3Component implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private httpRouting: HttpRoutingService) { }
 
   todayDate = new Date();
-
+  message!: Observable<any>;
   selectedValue!: string;
   Designation: any[] = [
     { value: '0', viewValue: 'TeamLeader' },
@@ -32,6 +33,8 @@ export class Task3Component implements OnInit {
     setTimeout(() => {
       this.dataService.tittle.emit('Forms');
     });
+
+    this.message = this.httpRouting.getJsonData('message.json')
 
     this.register = new FormGroup({
       FirstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),

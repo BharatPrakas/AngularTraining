@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
     { path: '/app/task4', value: 'Snackbar' },
     { path: '/app/api', value: 'API' },
     { path: '/app/dynamic', value: 'Table' },
+    { path: '/app/task1', value: 'Observable' },
   ];
 
   ngOnInit(): void {

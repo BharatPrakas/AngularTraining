@@ -49,6 +49,7 @@ export class EmployeeComponent {
   @ViewChild('editRecords', { static: true }) edit!: TemplateRef<any>
 
   ngOnInit() {
+
     setTimeout(() => {
       this.dataService.tittle.emit('Employee');
     });

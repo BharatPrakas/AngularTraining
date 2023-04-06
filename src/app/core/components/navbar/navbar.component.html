@@ -10,7 +10,8 @@
       [mode]="isSmallDevice ? 'over' : 'side'">
       <mat-nav-list>
         <a *ngFor="let item of navList" [routerLink]="item.path" mat-list-item
-          [ngClass]="{activetab: item.value === pageTitle }">{{item.value}}</a>
+          routerLinkActive="activetab">{{item.value}}</a>
+        <!-- [ngClass]="{activetab: item.value === pageTitle }" -->
       </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content class="content">

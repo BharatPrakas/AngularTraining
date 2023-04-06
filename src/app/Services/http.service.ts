@@ -11,4 +11,8 @@ export class HttpService {
   posts() {
     return this.httpRouting.getMethod('posts');
   }
+
+  doDo() {
+    return this.httpRouting.getMethod('todos');
+  }
 }

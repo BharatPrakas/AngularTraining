@@ -15,6 +15,7 @@ import { TimesheetComponent } from './components/dynamicTable/timesheet/timeshee
 import { WorklistComponent } from './components/dynamicTable/worklist/worklist.component';
 import { DefalutComponent } from './components/dynamicTable/defalut/defalut.component';
 import { ApiComponent } from './components/api/api.component';
+import { BytesPipe } from './pipes/bytes.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ApiComponent } from './components/api/api.component';
     WorklistComponent,
     DefalutComponent,
     ApiComponent,
+    BytesPipe,
 
   ],
   exports: [

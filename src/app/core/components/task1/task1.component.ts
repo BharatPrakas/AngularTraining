@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable, Subscription, observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { DataService } from 'src/app/Services/data.service';
 
 @Component({
   selector: 'app-task1',
@@ -7,21 +8,32 @@ import { Observable, Subscription, observable } from 'rxjs';
   styleUrls: ['./task1.component.scss']
 })
 export class Task1Component {
-
+  dataRef!: Subscription;
+  constructor(private dataService: DataService) { }
   ngOnInit() {
-
-  }
-
-
-  subscribe() {
-    let data = new Observable(x => {
-
-    })
-
-    data.subscribe({
-      next: (res) => {
-        console.log(res);
-      }
+    setTimeout(() => {
+      this.dataService.tittle.emit('Observable');
     });
+  }
+  //----- OBSERVABLE DECLARATION -----
+  data(): Observable<string> {
+    return new Observable(x => {
+      setInterval(() => {
+        x.next('Subscribed');
+      })
+    })
+  }
+  //----- OBSERVABLE SUBSCRIBTION -----
+  subscribe() {
+    this.dataRef = this.data().subscribe(response => {
+      console.log(response);
+    });
+    //--- SNACKBAR MSG ---
+    this.dataService.customSnakbar('Output was displayed in console', 'success', 5000);
+  }
+  //----- OBSERVABLE UNSUBSCRIBE -----
+  unsubscribe() {
+    this.dataRef.unsubscribe();
+    console.log("UnSubscribed");
   }
 }

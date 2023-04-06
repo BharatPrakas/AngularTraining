@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-table',
@@ -8,12 +9,17 @@ import { Component, Input } from '@angular/core';
 
 export class TableComponent {
   @Input() DisplyedData!: any;
-
   displayedColumns!: string[];
-  datasource!: string[];
+  dataSource!: any;
 
   ngOnInit() {
+    console.log(this.DisplyedData);
+
+    // this.displayedColumns = ['id', 'title'];
+    // this.dataSource = this.DisplyedData;
+
     this.displayedColumns = this.DisplyedData.displayFormat;
-    this.datasource = this.DisplyedData.displayData;
+    this.dataSource = this.DisplyedData.displayData;
   }
+
 }

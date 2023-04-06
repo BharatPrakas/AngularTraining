@@ -16,4 +16,8 @@ export class HttpRoutingService {
   postMethod(url: string, data: any) {
     return this.httpClient.post(this.apiUrl + url, data)
   }
+
+  getJsonData(url: string) {
+    return this.httpClient.get('./assets/' + url);
+  }
 }

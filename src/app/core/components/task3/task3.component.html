@@ -8,7 +8,7 @@
           <mat-form-field fxFlex="60%" appearance="outline">
             <input matInput formControlName="FirstName">
             <mat-error *ngIf="register?.get('FirstName')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
             <mat-error *ngIf="register?.get('FirstName')?.hasError('pattern')">
               Numeric values are not allowed!
@@ -20,7 +20,7 @@
           <mat-form-field fxFlex="60%" appearance="outline">
             <input matInput formControlName="LastName">
             <mat-error *ngIf="register?.get('LastName')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
             <mat-error *ngIf="register?.get('LastName')?.hasError('pattern')">
               Numeric values are not allowed!
@@ -35,10 +35,10 @@
           <mat-form-field fxFlex="60%" appearance="outline">
             <input matInput formControlName="Email">
             <mat-error *ngIf="register?.get('Email')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
             <mat-error *ngIf="register?.get('Email')?.hasError('email')">
-              Invalid Email
+              {{(message|async)?.EMAIL }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -47,10 +47,10 @@
           <mat-form-field fxFlex="60%" appearance="outline">
             <input matInput formControlName="AlternateEmail">
             <mat-error *ngIf="register?.get('AlternateEmail')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
             <mat-error *ngIf="register?.get('AlternateEmail')?.hasError('email')">
-              Invalid Email
+              {{(message|async)?.EMAIL }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -65,7 +65,7 @@
             <mat-datepicker #picker></mat-datepicker>
             <mat-error
               *ngIf="register?.get('DateOfBirth')?.hasError('required') && register.get('DateOfBirth')?.hasError('matDatepickerParse')">
-              Invalid Date
+              {{(message|async)?.DATE }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -78,7 +78,7 @@
             <mat-datepicker #picker2></mat-datepicker>
             <mat-error
               *ngIf="register?.get('DateOfJoin')?.hasError('required') && register.get('DateOfJoin')?.hasError('matDatepickerParse')">
-              Invalid Date
+              {{(message|async)?.DATE }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -94,7 +94,7 @@
               </mat-option>
             </mat-select>
             <mat-error *ngIf="register?.get('Designation')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -107,7 +107,7 @@
               </mat-option>
             </mat-select>
             <mat-error *ngIf="register?.get('Role')?.hasError('required')">
-              This field is required!
+              {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
         </div>

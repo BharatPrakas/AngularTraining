@@ -1,8 +1,15 @@
-<div class="task1-container" fxLayoutAlign="center">
-  <div class="container" fxLayoutGap="10px" fxLayout="column" fxFlex="30%">
-    <div class="btn" fxLayoutGap="10px" fxLayout="column">
-      <button mat-stroked-button color="primary" (click)="subscribe()">Subscribe</button>
-      <button mat-stroked-button color="warn">Unsubscribe</button>
+<div class="container" fxLayoutAlign="center">
+  <div class="task1-container border" fxLayoutGap="30px" fxLayout="row" fxFlex="100%" fxLayoutAlign="center">
+    <div class="container border" fxLayoutGap="20px" fxLayout="column" fxFlex="30%" fxFlex.lt-md="50%">
+      <h2 align="center">Observables</h2>
+      <div class="btn" fxLayoutGap="15px" fxLayout="row">
+        <button fxFlex="50%" mat-raised-button color="primary" (click)="subscribe()">Subscribe</button>
+        <button fxFlex="50%" mat-raised-button color="warn" (click)="unsubscribe()">Unsubscribe</button>
+      </div>
+    </div>
+    <div fxLayoutAlign="center center" class="border" fxLayout="column" fxFlex="30%" fxFlex.lt-md="50%">
+      <h2>pipe</h2>
+      <p>{{924340 | bytes}}</p>
     </div>
   </div>
 </div>
