@@ -1,0 +1,71 @@
+.container {
+  height: 100%;
+  padding: 30px 10px;
+}
+
+.content {
+  padding: 30px 40px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 1px 10px rgb(202, 198, 198);
+}
+
+.content a {
+  padding: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: grey;
+}
+
+.content button {
+  background-color: #050b47;
+  color: white;
+  padding: 20px !important;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.content h2 {
+  margin: 10px 0 0 0;
+}
+
+.error {
+  color: #e20d31;
+  text-align: center;
+}
+
+.success {
+  color: #099610;
+  text-align: center;
+}
+
+.loader {
+  height: 25px !important;
+  width: 25px !important;
+}
+
+::ng-deep .signup .mat-mdc-form-field-flex {
+  height: 45px !important;
+}
+
+::ng-deep .signup .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+
+::ng-deep .signup .mdc-text-field--filled:not(.mdc-text-field--disabled):focus-within {
+  background-color: white !important;
+}
+
+::ng-deep .signup .mdc-text-field--filled:focus {
+  background-color: white !important;
+}
+
+::ng-deep .signup .mdc-text-field {
+  padding: 0 !important;
+}
+
+::ng-deep .signup .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 10px !important;
+  padding-bottom: 100px !important;
+}

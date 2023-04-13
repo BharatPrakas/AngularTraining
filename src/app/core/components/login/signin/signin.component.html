@@ -1,0 +1,20 @@
+<div class="container" fxLayoutAlign="center center">
+  <div class="content" fxFlex="25%" fxFlex.lt-sm="100%" fxFlex.lt-lg="40%" fxFlex.lt-md="50%" fxLayout="column">
+    <mat-error class="error" align="center" *ngIf="!isResponceGetted">{{errorMessage}}</mat-error>
+    <div fxLayoutAlign="center center" *ngIf="isResponceGetted">
+      <mat-spinner class="loader"></mat-spinner>
+    </div>
+    <h2>Signin</h2>
+    <form [formGroup]="loginCredentials" fxLayout="column">
+      <mat-form-field class="signin-field" appearance="fill">
+        <input type="email" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="signin-field" appearance="fill">
+        <input type="password" matInput placeholder="password" formControlName="password">
+      </mat-form-field>
+      <div class="forgot" align="end"><span routerLink="/forgot">Forgot password</span></div>
+      <button mat-raised-button (click)="signin()">Signin</button>
+      <a routerLink="/signup" align="center">Create an account</a>
+    </form>
+  </div>
+</div>

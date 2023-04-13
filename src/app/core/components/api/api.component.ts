@@ -28,6 +28,7 @@ export class ApiComponent {
   httpRef!: Subscription;
   datasource!: any
   displayedColumns!: any;
+  temp!: any;
   // buttons!: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private http: HttpService, private dataService: DataService) { }
@@ -45,7 +46,7 @@ export class ApiComponent {
     });
   }
 
-  clickEvent(event: string) {
+  clickEvent(event: any) {
     console.log(event);
     // this[event]();
   }

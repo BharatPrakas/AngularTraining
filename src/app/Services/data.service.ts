@@ -20,10 +20,10 @@ export class DataService {
     const snackBarRef = this.snackBar.open(msg, action, { duration: 5000, panelClass: 'success-snackbar' });
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log('dissmissed');
+      // console.log('dissmissed');
     });
     snackBarRef.onAction().subscribe(() => {
-      console.log('Action Triggerd');
+      // console.log('Action Triggerd');
     });
   }
 
@@ -32,10 +32,10 @@ export class DataService {
     const snackBarRef = this.snackBar.open(msg, action, { duration: 2000, panelClass: 'warning-snackbar' });
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log('dissmissed');
+      // console.log('dissmissed');
     });
     snackBarRef.onAction().subscribe(() => {
-      console.log('Action Triggerd');
+      // console.log('Action Triggerd');
     });
   }
 
@@ -44,10 +44,10 @@ export class DataService {
     const snackBarRef = this.snackBar.open(msg, action, { duration: 2000, panelClass: 'error-snackbar' });
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log('dissmissed');
+      // console.log('dissmissed');
     });
     snackBarRef.onAction().subscribe(() => {
-      console.log('Action Triggerd');
+      // console.log('Action Triggerd');
     });
   }
 
@@ -56,10 +56,10 @@ export class DataService {
     const snackBarRef = this.snackBar.open(msg, action, { duration: 2000, panelClass: 'defalut-snackbar' });
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log('dissmissed');
+      // console.log('dissmissed');
     });
     snackBarRef.onAction().subscribe(() => {
-      console.log('Action Triggerd');
+      // console.log('Action Triggerd');
     });
   }
 

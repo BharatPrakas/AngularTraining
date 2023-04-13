@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class NavbarComponent implements OnInit {
   isSmallDevice = false;
   toggler = true;
   pageTitle!: string;
-  constructor(private mediaObserver: MediaObserver, public dataService: DataService) {
+  constructor(
+    private mediaObserver: MediaObserver,
+    public dataService: DataService,
+    private auth: AuthService
+  ) {
   }
 
   navList = [
@@ -40,5 +45,9 @@ export class NavbarComponent implements OnInit {
         }
       });
     });
+  }
+
+  logout() {
+    this.auth.signout();
   }
 }

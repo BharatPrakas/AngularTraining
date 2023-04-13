@@ -13,7 +13,7 @@
 }
 
 .navbar {
-    background-color: #121212;
+    background-color: #050b47;
     color: white;
 }
 
@@ -26,7 +26,11 @@
 }
 
 .activetab {
-    background-color: #d4caca;
+    background-color: #939ad4;
+}
+
+.navbar mat-icon {
+    cursor: pointer;
 }
 
 // .mdc-list-item__primary-text {

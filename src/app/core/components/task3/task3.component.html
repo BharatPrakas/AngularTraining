@@ -64,7 +64,7 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error
-              *ngIf="register?.get('DateOfBirth')?.hasError('required') && register.get('DateOfBirth')?.hasError('matDatepickerParse')">
+              *ngIf="register?.get('DateOfBirth')?.hasError('required') || register.get('DateOfBirth')?.hasError('matDatepickerParse')">
               {{(message|async)?.DATE }}
             </mat-error>
           </mat-form-field>
@@ -77,8 +77,8 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
             <mat-error
-              *ngIf="register?.get('DateOfJoin')?.hasError('required') && register.get('DateOfJoin')?.hasError('matDatepickerParse')">
-              {{(message|async)?.DATE }}
+              *ngIf="register?.get('DateOfJoin')?.hasError('required') || register.get('DateOfJoin')?.hasError('matDatepickerParse')">
+              {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -89,7 +89,7 @@
           <mat-label fxFlex="40%">Designation</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
             <mat-select formControlName="Designation">
-              <mat-option *ngFor="let data of Designation" [value]="data.value">
+              <mat-option *ngFor="let data of Designation" [value]="data">
                 {{data.viewValue}}
               </mat-option>
             </mat-select>

@@ -1,0 +1,25 @@
+<div class="container" fxLayoutAlign="center center">
+  <div class="content" fxFlex="25%" fxFlex.lt-sm="100%" fxFlex.lt-lg="40%" fxFlex.lt-md="50%" fxLayout="column">
+    <mat-error [ngClass]="{success:haveAccount,error:!haveAccount}" align="center" *ngIf="!isResponceGetted">
+      {{errorMessage}}
+    </mat-error>
+    <div fxLayoutAlign="center center" *ngIf="isResponceGetted">
+      <mat-spinner class="loader"></mat-spinner>
+    </div>
+    <h2>Signup</h2>
+    <form [formGroup]="Signup" fxLayout="column">
+      <mat-form-field appearance="fill" class="signup">
+        <input type="email" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="signup">
+        <input type="password" matInput placeholder="password" formControlName="password">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="signup">
+        <input type="password" matInput placeholder="Confirm password" formControlName="password2">
+      </mat-form-field>
+      <button mat-raised-button (click)=" signup()">Signup</button>
+      <a routerLink="/signin" align="center">Already have an account</a>
+    </form>
+    <br>
+  </div>
+</div>

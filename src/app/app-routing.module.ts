@@ -10,12 +10,16 @@ import { Task5Component } from './core/components/task5/task5.component';
 import { TableComponent } from './core/components/table/table.component';
 import { TimesheetComponent } from './core/components/dynamicTable/timesheet/timesheet.component';
 import { ApiComponent } from './core/components/api/api.component';
-
+import { SigninComponent } from './core/components/login/signin/signin.component';
+import { SignupComponent } from './core/components/login/signup/signup.component';
+import { LoginGuard } from './Services/login.guard';
+import { AuthGuard } from './Services/auth.guard';
+import { ForgotComponent } from './core/components/login/forgot/forgot.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'app/employee', pathMatch: 'full' },
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
   {
-    path: 'app', component: NavbarComponent, children: [
+    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], children: [
       { path: 'employee', component: EmployeeComponent },
       { path: 'task1', component: Task1Component },
       { path: 'task2', component: Task2Component },
@@ -26,7 +30,10 @@ const routes: Routes = [
       { path: 'dynamic', component: TimesheetComponent },
       { path: 'api', component: ApiComponent },
     ]
-  }
+  },
+  { path: 'signin', component: SigninComponent, canActivate: [LoginGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
+  { path: 'forgot', component: ForgotComponent, canActivate: [LoginGuard] },
 ];
 
 @NgModule({

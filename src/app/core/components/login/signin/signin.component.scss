@@ -1,0 +1,89 @@
+.container {
+  height: 100%;
+  padding: 30px 10px;
+}
+
+.content {
+  padding: 30px 40px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 1px 10px rgb(202, 198, 198);
+}
+
+.content h2 {
+  margin: 10px 0 0 0;
+}
+
+.error {
+  color: rgb(250, 31, 31)
+}
+
+.content a {
+  padding: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: grey;
+}
+
+.content button {
+  background-color: #050b47;
+  color: white;
+  padding: 20px !important;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.content .forgot {
+  font-size: 13px;
+  color: #050b47;
+}
+
+.content .forgot span {
+  cursor: pointer;
+}
+
+.content .errorMsg {
+  color: #DC4C64;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.loader {
+  height: 25px !important;
+  width: 25px !important;
+}
+
+
+
+::ng-deep .signin-field .mat-mdc-form-field-flex {
+  height: 48px !important;
+}
+
+::ng-deep .signin-field .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+
+::ng-deep .signin-field .mdc-text-field--filled:not(.mdc-text-field--disabled):focus-within {
+  background-color: white !important;
+}
+
+::ng-deep .signin-field .mdc-text-field--filled:focus {
+  background-color: white !important;
+}
+
+::ng-deep .signin-field .mdc-text-field {
+  padding: 0 !important;
+}
+
+
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+::ng-deep .mdc-text-field--outlined {
+  padding-right: max(0px, var(--mdc-shape-small, 4px)) !important;
+  padding-left: max(0px, var(--mdc-shape-small, 4px)) !important;
+}

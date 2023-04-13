@@ -9,6 +9,7 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class Task1Component {
   dataRef!: Subscription;
+  value !: number;
   constructor(private dataService: DataService) { }
   ngOnInit() {
     setTimeout(() => {

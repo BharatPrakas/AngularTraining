@@ -16,6 +16,9 @@ import { WorklistComponent } from './components/dynamicTable/worklist/worklist.c
 import { DefalutComponent } from './components/dynamicTable/defalut/defalut.component';
 import { ApiComponent } from './components/api/api.component';
 import { BytesPipe } from './pipes/bytes.pipe';
+import { SigninComponent } from './components/login/signin/signin.component';
+import { SignupComponent } from './components/login/signup/signup.component';
+import { ForgotComponent } from './components/login/forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { BytesPipe } from './pipes/bytes.pipe';
     DefalutComponent,
     ApiComponent,
     BytesPipe,
+    SigninComponent,
+    SignupComponent,
+    ForgotComponent,
 
   ],
   exports: [
@@ -45,6 +51,7 @@ import { BytesPipe } from './pipes/bytes.pipe';
     EmployeeComponent,
     TableComponent,
     ApiComponent,
+    SigninComponent,
   ],
   imports: [
     CommonModule,

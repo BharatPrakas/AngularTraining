@@ -21,7 +21,6 @@ export class Task3Component implements OnInit {
     { value: '1', viewValue: 'Senior Software Engineer' },
     { value: '2', viewValue: 'SoftwareEngineer' },
   ];
-
   Roles: any[] = [
     { value: '0', viewValue: 'Super Admin' },
     { value: '1', viewValue: 'Admin' },

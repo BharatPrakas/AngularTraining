@@ -13,8 +13,6 @@ export class TableComponent {
   dataSource!: any;
 
   ngOnInit() {
-    console.log(this.DisplyedData);
-
     // this.displayedColumns = ['id', 'title'];
     // this.dataSource = this.DisplyedData;
 

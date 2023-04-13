@@ -1,15 +1,20 @@
 <div class="container" fxLayoutAlign="center">
-  <div class="task1-container border" fxLayoutGap="30px" fxLayout="row" fxFlex="100%" fxLayoutAlign="center">
-    <div class="container border" fxLayoutGap="20px" fxLayout="column" fxFlex="30%" fxFlex.lt-md="50%">
+  <div class="task1-container border" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayout="row" fxFlex="100%"
+    fxLayoutAlign="center">
+    <div class="container border" fxLayoutGap="20px" fxLayout="column" fxFlex="30%" fxFlex.lt-md="100%">
       <h2 align="center">Observables</h2>
-      <div class="btn" fxLayoutGap="15px" fxLayout="row">
-        <button fxFlex="50%" mat-raised-button color="primary" (click)="subscribe()">Subscribe</button>
-        <button fxFlex="50%" mat-raised-button color="warn" (click)="unsubscribe()">Unsubscribe</button>
+      <div class="btn" fxLayoutGap="15px" fxLayout="row" fxLayout.lt-md="column">
+        <button fxFlex="50%" mat-raised-button class="subscribe" (click)="subscribe()">Subscribe</button>
+        <button fxFlex="50%" mat-raised-button class="unsubscribe" (click)="unsubscribe()">Unsubscribe</button>
       </div>
     </div>
+    <!-- -----PIPE----- -->
     <div fxLayoutAlign="center center" class="border" fxLayout="column" fxFlex="30%" fxFlex.lt-md="50%">
       <h2>pipe</h2>
-      <p>{{924340 | bytes}}</p>
+      <mat-form-field appearance="outline">
+        <input type="number" [(ngModel)]="value" matInput placeholder="Bytes(number)">
+      </mat-form-field>
+      <p>{{value | bytes}}</p>
     </div>
   </div>
 </div>
