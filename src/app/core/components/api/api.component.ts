@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/Services/data.service';
-import { HttpService } from 'src/app/Services/http.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { HttpServiceService } from 'src/app/Services/http-service.service';
 
 export interface btns {
   color: string,
@@ -29,11 +29,14 @@ export class ApiComponent {
   datasource!: any
   displayedColumns!: any;
   temp!: any;
-  // buttons!: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private http: HttpService, private dataService: DataService) { }
+  constructor(
+    private http: HttpServiceService,
+    private dataService: DataService,
+  ) { }
 
   ngOnInit() {
+    this.dataService.customSnakbar('Please switch json api', 'defalut', 5000);
     setTimeout(() => {
       this.dataService.tittle.emit('API');
     });

@@ -19,6 +19,7 @@ import { BytesPipe } from './pipes/bytes.pipe';
 import { SigninComponent } from './components/login/signin/signin.component';
 import { SignupComponent } from './components/login/signup/signup.component';
 import { ForgotComponent } from './components/login/forgot/forgot.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ForgotComponent } from './components/login/forgot/forgot.component';
     SigninComponent,
     SignupComponent,
     ForgotComponent,
-
+    UsersComponent,
   ],
   exports: [
     NavbarComponent,
@@ -52,6 +53,7 @@ import { ForgotComponent } from './components/login/forgot/forgot.component';
     TableComponent,
     ApiComponent,
     SigninComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,

@@ -1,16 +1,19 @@
+<div *ngIf="fromEdit" class="back-btn" fxLayoutAlign="end">
+  <button mat-stroked-button (click)="previous()"><mat-icon>keyboard_backspace</mat-icon>back</button>
+</div>
 <div class="container">
   <div class="content border" fxFlex="100%">
-    <form [formGroup]="register">
+    <form *ngIf="register" [formGroup]="register" (ngSubmit)="fromEdit?onUpdate(f):OnSubmit(f)" #f="ngForm">
       <!-- -----FirstName & LastName----- -->
       <div fxLayoutGap="5%" fxLayoutGap.lt-md="0%" fxLayout.gt-sm="row" fxLayout.lt-md="column">
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">First Name</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput formControlName="FirstName">
-            <mat-error *ngIf="register?.get('FirstName')?.hasError('required')">
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="register?.get('firstName')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
-            <mat-error *ngIf="register?.get('FirstName')?.hasError('pattern')">
+            <mat-error *ngIf="register?.get('firstName')?.hasError('pattern')">
               Numeric values are not allowed!
             </mat-error>
           </mat-form-field>
@@ -18,11 +21,11 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Last Name</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput formControlName="LastName">
-            <mat-error *ngIf="register?.get('LastName')?.hasError('required')">
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="register?.get('lastName')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
-            <mat-error *ngIf="register?.get('LastName')?.hasError('pattern')">
+            <mat-error *ngIf="register?.get('lastName')?.hasError('pattern')">
               Numeric values are not allowed!
             </mat-error>
           </mat-form-field>
@@ -33,11 +36,11 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Email</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput formControlName="Email">
-            <mat-error *ngIf="register?.get('Email')?.hasError('required')">
+            <input matInput formControlName="email">
+            <mat-error *ngIf="register?.get('email')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
-            <mat-error *ngIf="register?.get('Email')?.hasError('email')">
+            <mat-error *ngIf="register?.get('email')?.hasError('email')">
               {{(message|async)?.EMAIL }}
             </mat-error>
           </mat-form-field>
@@ -45,11 +48,11 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Alternate Email</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput formControlName="AlternateEmail">
-            <mat-error *ngIf="register?.get('AlternateEmail')?.hasError('required')">
+            <input matInput formControlName="alternateEmail">
+            <mat-error *ngIf="register?.get('alternateEmail')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
-            <mat-error *ngIf="register?.get('AlternateEmail')?.hasError('email')">
+            <mat-error *ngIf="register?.get('alternateEmail')?.hasError('email')">
               {{(message|async)?.EMAIL }}
             </mat-error>
           </mat-form-field>
@@ -60,11 +63,11 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Date of Birth</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput [matDatepicker]="picker" formControlName="DateOfBirth" [max]="todayDate">
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" [max]="todayDate">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error
-              *ngIf="register?.get('DateOfBirth')?.hasError('required') || register.get('DateOfBirth')?.hasError('matDatepickerParse')">
+              *ngIf="register?.get('dateOfBirth')?.hasError('required') || register.get('dateOfBirth')?.hasError('matDatepickerParse')">
               {{(message|async)?.DATE }}
             </mat-error>
           </mat-form-field>
@@ -72,12 +75,12 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Date of Join</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <input matInput [matDatepicker]="picker2" formControlName="DateOfJoin"
-              [min]="register.get('DateOfBirth')?.value">
+            <input matInput [matDatepicker]="picker2" formControlName="dateOfJoin"
+              [min]="register.get('dateOfBirth')?.value">
             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
             <mat-error
-              *ngIf="register?.get('DateOfJoin')?.hasError('required') || register.get('DateOfJoin')?.hasError('matDatepickerParse')">
+              *ngIf="register?.get('dateOfJoin')?.hasError('required') || register.get('dateOfJoin')?.hasError('matDatepickerParse')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
@@ -88,12 +91,12 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Designation</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <mat-select formControlName="Designation">
-              <mat-option *ngFor="let data of Designation" [value]="data">
+            <mat-select formControlName="designation">
+              <mat-option *ngFor="let data of Designation" [value]="data.viewValue">
                 {{data.viewValue}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="register?.get('Designation')?.hasError('required')">
+            <mat-error *ngIf="register?.get('designation')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
@@ -101,12 +104,12 @@
         <div fxFlex="50%" fxFlex.lt-md="100%" fxLayout="row" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Role</mat-label>
           <mat-form-field fxFlex="60%" appearance="outline">
-            <mat-select formControlName="Role">
-              <mat-option *ngFor="let Role of Roles" [value]="Role.value">
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let Role of Roles" [value]="Role.viewValue">
                 {{Role.viewValue}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="register?.get('Role')?.hasError('required')">
+            <mat-error *ngIf="register?.get('role')?.hasError('required')">
               {{(message|async)?.REQUIRED }}
             </mat-error>
           </mat-form-field>
@@ -115,7 +118,7 @@
       <!-------Submit Button------->
       <div fxLayoutAlign="center center" fxLayoutGap="10px">
         <button type="reset" mat-stroked-button (click)="OnClear()">Clear</button>
-        <button mat-raised-button class="btn" (click)="OnSubmit()">Submit</button>
+        <button mat-raised-button class="btn" type="submit">{{fromEdit?'Update':'Submit'}}</button>
       </div>
     </form>
     <br>

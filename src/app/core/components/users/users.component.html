@@ -1,0 +1,35 @@
+<!-- <div class="container">
+  <app-table [DisplyedData]="dataSharing"></app-table>
+</div> -->
+<div class="addEmplyee" fxLayoutAlign="end" fxLayoutGap="10px">
+  <button mat-raised-button color="warn" (click)="addEmployee()"><mat-icon>add</mat-icon> Add Employee</button>
+</div>
+<div class="table mat-elevation-z2">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      //----- CUSTOMIZE ----------
+      <ng-container *ngIf="column==='dateOfJoin'">
+        <td mat-cell *matCellDef="let element"> {{element[column] | date:'mediumDate'}}</td>
+      </ng-container>
+      <ng-container *ngIf="column==='action'">
+        <td mat-cell *matCellDef="let element">
+          <mat-icon *ngFor="let action of actions" matTooltip={{action.icon}}
+            (click)="eventClick(element,action.function)">{{action.icon}}</mat-icon>
+        </td>
+      </ng-container>
+      //-------------------------
+      <ng-container>
+        <td mat-cell *matCellDef="let element"> {{element[column] }}</td>
+      </ng-container>
+    </ng-container>
+    <!-- ----------MAIN CONTROL----------- -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="spinner-container" *ngIf="isGetResponse" fxLayoutAlign="center center">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  <mat-paginator [pageSizeOptions]="[10, 20, 25]" showFirstLastButtons>
+  </mat-paginator>
+</div>

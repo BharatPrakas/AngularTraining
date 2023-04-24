@@ -27,3 +27,46 @@ span {
     background-color: #800202 !important;
     color: white !important;
 }
+
+
+//------------------------
+
+
+.slide {
+    width: 100%;
+    // position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.slider {
+    display: block;
+    // padding-left: 100%;
+    overflow: hidden;
+    position: absolute;
+    animation: slider 8s ease-in infinite;
+    // animation-name: slider;
+    // animation-duration: 8s;
+    // animation-iteration-count: infinite;
+    // animation-timing-function: ease-in;
+    // padding-left: 100%;
+}
+
+.slider .cards {
+    height: 300px;
+    width: 300px;
+}
+
+.cards img {
+    height: 100%;
+}
+
+@keyframes slider {
+    0% {
+        left: 0px;
+    }
+
+    100% {
+        left: -100%;
+    }
+}

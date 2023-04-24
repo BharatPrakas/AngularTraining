@@ -4,7 +4,11 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>{{pageTitle}}</span>
-    <mat-icon routerLink="/signin" matTooltip="Logout">logout</mat-icon>
+    <div class="nav-icon" fxLayoutAlign="center center" fxLayoutGap="15px">
+      <mat-icon matTooltip="notification">notifications</mat-icon>
+      <mat-icon matTooltip="settings">settings</mat-icon>
+      <mat-icon routerLink="/signin" matTooltip="Logout">logout</mat-icon>
+    </div>
   </mat-toolbar>
   <mat-drawer-container class="sidebar-container">
     <mat-drawer class="sidenav-drawer" #drawer [opened]="isSmallDevice?false:true"

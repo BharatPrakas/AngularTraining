@@ -1,0 +1,30 @@
+.container {
+  margin: 20px 10px;
+  max-width: 100%;
+}
+
+.addEmplyee button {
+  background-color: #050b47;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.table {
+  max-width: 100%;
+  overflow: hidden;
+  overflow: auto;
+}
+
+.table mat-icon {
+  cursor: pointer;
+}
+
+.spinner {
+  height: 45px !important;
+  width: 45px !important;
+}
+
+.spinner-container {
+  padding: 20px;
+}

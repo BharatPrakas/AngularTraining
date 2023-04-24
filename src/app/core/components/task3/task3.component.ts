@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/Services/data.service';
 import { HttpRoutingService } from 'src/app/Services/http-routing.service';
+import { UserServiceService } from 'src/app/Services/user-service.service';
 
 @Component({
   selector: 'app-task3',
@@ -11,8 +13,17 @@ import { HttpRoutingService } from 'src/app/Services/http-routing.service';
 })
 export class Task3Component implements OnInit {
 
-  constructor(private dataService: DataService, private httpRouting: HttpRoutingService) { }
+  constructor(
+    private dataService: DataService,
+    private httpRouting: HttpRoutingService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserServiceService
+  ) { }
 
+  appendId!: number;
+  fromEdit = false;
+  employeeRecord: any;
   todayDate = new Date();
   message!: Observable<any>;
   selectedValue!: string;
@@ -29,34 +40,81 @@ export class Task3Component implements OnInit {
 
   register!: FormGroup;
   ngOnInit() {
+    this.formInit();
     setTimeout(() => {
       this.dataService.tittle.emit('Forms');
     });
+    // this.formInit();
+    this.route.params.subscribe((res: any) => {
+      if (res && res.id) {
+        this.appendId = res.id;
+        this.fromEdit = true;
+        this.httpRouting.postMethod('/getEmployeeRecord', { id: +res.id }).subscribe((res: any) => {
+          this.employeeRecord = res.response;
+          this.formInit();
+          // delete res.response.id;
+          // this.register.setValue(res.response);
+        });
+      }
+      else {
+        this.formInit();
+      }
+    });
 
-    this.message = this.httpRouting.getJsonData('message.json')
+    this.message = this.httpRouting.getJsonData('message.json');
 
+  }
+  formInit() {
     this.register = new FormGroup({
-      FirstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      LastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
-      Email: new FormControl(null, [Validators.required, Validators.email]),
-      AlternateEmail: new FormControl(null, [Validators.required, Validators.email]),
-      DateOfBirth: new FormControl(null, Validators.required),
-      DateOfJoin: new FormControl(null, Validators.required),
-      Designation: new FormControl(null, Validators.required),
-      Role: new FormControl(null, Validators.required),
-      contacts: new FormArray([])
+      firstName: new FormControl(this.employeeRecord && this.employeeRecord.firstName ? this.employeeRecord.firstName : null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      lastName: new FormControl(this.employeeRecord && this.employeeRecord.lastName ? this.employeeRecord.lastName : null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
+      email: new FormControl(this.employeeRecord && this.employeeRecord.email ? this.employeeRecord.email : null, [Validators.required, Validators.email]),
+      alternateEmail: new FormControl(this.employeeRecord && this.employeeRecord.alternateEmail ? this.employeeRecord.alternateEmail : null, [Validators.required, Validators.email]),
+      dateOfBirth: new FormControl(this.employeeRecord && this.employeeRecord.dateOfBirth ? this.employeeRecord.dateOfBirth : null, Validators.required),
+      dateOfJoin: new FormControl(this.employeeRecord && this.employeeRecord.dateOfJoin ? this.employeeRecord.dateOfJoin : null, Validators.required),
+      designation: new FormControl(this.employeeRecord && this.employeeRecord.designation ? this.employeeRecord.designation : null, Validators.required),
+      role: new FormControl(this.employeeRecord && this.employeeRecord.role ? this.employeeRecord.role : null, Validators.required),
+      // contacts: new FormArray([])
     });
   }
-  OnSubmit() {
+  OnSubmit(form: FormGroupDirective) {
     if (this.register.valid) {
-      this.dataService.successSnakbar('Submitted Sucessfully', 'ok');
+      this.httpRouting.postMethod('/createEmployee', this.register.value).subscribe({
+        next: res => {
+          if (res) {
+            form.resetForm();
+            this.dataService.customSnakbar('Records added successfully', 'success');
+            this.router.navigate(['/app/db']);
+          }
+        },
+        error: err => {
+          this.dataService.customSnakbar(err.error.error, 'error')
+        }
+      })
     }
     else {
-      this.dataService.errorSnakbar('Something went wrong', 'ok');
+      this.dataService.customSnakbar('Fill the required details', 'error');
+    }
+  }
+
+  onUpdate(form: FormGroupDirective) {
+    if (this.register.valid) {
+      this.register.value.id = +this.appendId;
+      this.userService.updateRecord(this.register.value).subscribe((res: any) => {
+        if (res) {
+          form.resetForm();
+          this.dataService.customSnakbar('Data update Successfully!', 'success');
+          this.router.navigate(['/app/db']);
+        }
+      });
     }
   }
 
   OnClear() {
     this.register.reset();
+  }
+
+  previous() {
+    this.router.navigate(['/app/db']);
   }
 }

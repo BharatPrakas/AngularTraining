@@ -15,6 +15,7 @@ import { SignupComponent } from './core/components/login/signup/signup.component
 import { LoginGuard } from './Services/login.guard';
 import { AuthGuard } from './Services/auth.guard';
 import { ForgotComponent } from './core/components/login/forgot/forgot.component';
+import { UsersComponent } from './core/components/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -24,11 +25,14 @@ const routes: Routes = [
       { path: 'task1', component: Task1Component },
       { path: 'task2', component: Task2Component },
       { path: 'task3', component: Task3Component },
+      { path: 'task3/:data/:id', component: Task3Component },
       { path: 'task4', component: Task4Component },
       { path: 'task5', component: Task5Component },
       { path: 'table', component: TableComponent },
       { path: 'dynamic', component: TimesheetComponent },
       { path: 'api', component: ApiComponent },
+      { path: 'db', component: UsersComponent },
+
     ]
   },
   { path: 'signin', component: SigninComponent, canActivate: [LoginGuard] },

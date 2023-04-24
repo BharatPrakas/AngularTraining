@@ -10,11 +10,22 @@ import { DataService } from 'src/app/Services/data.service';
 export class Task1Component {
   dataRef!: Subscription;
   value !: number;
+  cards: any;
   constructor(private dataService: DataService) { }
   ngOnInit() {
     setTimeout(() => {
       this.dataService.tittle.emit('Observable');
     });
+
+    //----- SLIDER ------
+    this.cards = [
+      { no: 1, image: "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/p/k/l-dss-plan-3-prexacreation-original-imagman55wy4cp6m.jpeg?q=70" },
+      { no: 2, image: "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/p/k/l-dss-plan-3-prexacreation-original-imagman55wy4cp6m.jpeg?q=70" },
+      { no: 3, image: "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/p/k/l-dss-plan-3-prexacreation-original-imagman55wy4cp6m.jpeg?q=70" },
+      { no: 1, image: "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/p/k/l-dss-plan-3-prexacreation-original-imagman55wy4cp6m.jpeg?q=70" },
+      { no: 1, image: "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/p/k/l-dss-plan-3-prexacreation-original-imagman55wy4cp6m.jpeg?q=70" },
+
+    ];
   }
   //----- OBSERVABLE DECLARATION -----
   data(): Observable<string> {
@@ -37,4 +48,6 @@ export class Task1Component {
     this.dataRef.unsubscribe();
     console.log("UnSubscribed");
   }
+
+
 }

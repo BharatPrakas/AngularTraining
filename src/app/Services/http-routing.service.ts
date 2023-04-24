@@ -10,11 +10,11 @@ export class HttpRoutingService {
   constructor(private httpClient: HttpClient) { }
 
   getMethod(url: string) {
-    return this.httpClient.get(this.apiUrl + url)
+    return this.httpClient.get(this.apiUrl + 'v1' + url);
   }
 
   postMethod(url: string, data: any) {
-    return this.httpClient.post(this.apiUrl + url, data)
+    return this.httpClient.post(this.apiUrl + 'v1' + url, data)
   }
 
   getJsonData(url: string) {

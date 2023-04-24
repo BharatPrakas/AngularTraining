@@ -74,7 +74,7 @@ export class DataService {
     const property = this.actions.find(x => x.action === action);
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: { msg: message, icon: property?.icon },
-      duration: duration ? duration : 2000,
+      duration: duration ? duration : 5000,
       panelClass: property?.style
     });
   }
