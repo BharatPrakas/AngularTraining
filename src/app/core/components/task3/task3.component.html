@@ -126,3 +126,10 @@
     <div *ngIf="register.get('contacts')"></div>
   </div>
 </div>
+<h2>swich theme</h2>
+<div class="theme-container">
+  <div class="themes" fxFlex="30%" fxLayoutAlign="space-around">
+    <button mat-raised-button color="primary" (click)="primaryTheme()">primary</button>
+    <button mat-raised-button color="accent" (click)="secondaryTheme()">secondary</button>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
+import { MessageService } from 'src/app/Services/messageService/message.service';
 
 @Component({
   selector: 'app-task4',
@@ -8,7 +9,10 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class Task4Component {
   msg = "hello";
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -35,5 +39,9 @@ export class Task4Component {
   //----- DEFAULT SNACKBAR -----
   default() {
     this.dataService.customSnakbar("Default SnackBar", 'defalut');
+  }
+
+  getToken() {
+    this.messageService.getToken();
   }
 }

@@ -117,4 +117,14 @@ export class Task3Component implements OnInit {
   previous() {
     this.router.navigate(['/app/db']);
   }
+  primaryTheme() {
+    document.body.classList.remove('pink-theme');
+    document.body.classList.add('purple-theme');
+    document.documentElement.className = 'purple-theme';
+  }
+  secondaryTheme() {
+    document.body.classList.remove('purple-theme');
+    document.body.classList.add('pink-theme');
+    document.documentElement.className = 'pink-theme';
+  }
 }

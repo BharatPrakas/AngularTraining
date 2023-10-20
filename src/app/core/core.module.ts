@@ -20,6 +20,11 @@ import { SigninComponent } from './components/login/signin/signin.component';
 import { SignupComponent } from './components/login/signup/signup.component';
 import { ForgotComponent } from './components/login/forgot/forgot.component';
 import { UsersComponent } from './components/users/users.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Color } from '@swimlane/ngx-charts';
+import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
+import { WINDOW_PROVIDERS } from '../Services/window/window.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +46,7 @@ import { UsersComponent } from './components/users/users.component';
     SignupComponent,
     ForgotComponent,
     UsersComponent,
+    ChartComponent,
   ],
   exports: [
     NavbarComponent,
@@ -54,11 +60,15 @@ import { UsersComponent } from './components/users/users.component';
     ApiComponent,
     SigninComponent,
     UsersComponent,
+    ChartComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-  ]
+    NgxChartsModule,
+    NgxHideOnScrollModule
+  ],
+  providers: [WINDOW_PROVIDERS]
 })
 export class CoreModule { }

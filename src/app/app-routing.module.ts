@@ -16,6 +16,7 @@ import { LoginGuard } from './Services/login.guard';
 import { AuthGuard } from './Services/auth.guard';
 import { ForgotComponent } from './core/components/login/forgot/forgot.component';
 import { UsersComponent } from './core/components/users/users.component';
+import { ChartComponent } from './core/components/chart/chart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'dynamic', component: TimesheetComponent },
       { path: 'api', component: ApiComponent },
       { path: 'db', component: UsersComponent },
+      { path: 'chart', component: ChartComponent },
 
     ]
   },
