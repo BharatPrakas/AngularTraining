@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { DataService } from './Services/data.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,4 @@ import { DataService } from './Services/data.service';
 
 export class AppComponent {
   title = 'AngularTraining';
-  constructor() { }
 }

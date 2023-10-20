@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { DataService } from 'src/app/Services/data.service';
 
@@ -14,12 +15,20 @@ export class NavbarComponent implements OnInit {
   isSmallDevice = false;
   toggler = true;
   pageTitle!: string;
+  eventSubscription: any
   constructor(
     private mediaObserver: MediaObserver,
     public dataService: DataService,
-    private auth: AuthService
+    private auth: AuthService,
+    @Inject(DOCUMENT) private document: Document
   ) {
   }
+  // @HostListener('window:scroll')
+  onWindowScroll() {
+    const offset = this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+    console.log(offset);
+  }
+
 
   navList = [
     { path: '/app/employee', value: 'Employee' },
@@ -30,9 +39,17 @@ export class NavbarComponent implements OnInit {
     { path: '/app/dynamic', value: 'Table' },
     { path: '/app/task1', value: 'Observable' },
     { path: '/app/db', value: 'Database' },
+    { path: '/app/chart', value: 'apexChart' },
   ];
 
   ngOnInit(): void {
+
+    this.eventSubscription = fromEvent(window, "scroll").subscribe(e => {
+      this.onWindowScroll();
+      console.log('event');
+
+    });
+
     this.dataService.tittle.subscribe(res => {
       this.pageTitle = res;
     })
